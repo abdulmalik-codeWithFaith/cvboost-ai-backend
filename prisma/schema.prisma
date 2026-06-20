@@ -1,0 +1,258 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+//prisma
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("DATABASE_URL")
+// }
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum AuthProvider {
+  LOCAL
+  GOOGLE
+  GITHUB
+}
+
+enum CVStatus {
+  UPLOADED
+  PROCESSING
+  COMPLETED
+  FAILED
+}
+
+enum CoverLetterStatus {
+  DRAFT
+  GENERATED
+}
+
+model User {
+  id String @id @default(uuid())
+
+  email    String  @unique
+  password String?
+
+  firstName String
+  lastName  String?
+
+  profilePicture String?
+
+  role UserRole @default(USER)
+
+  provider   AuthProvider @default(LOCAL)
+  providerId String?
+
+  isEmailVerified Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  profile Profile?
+
+  cvs CV[]
+
+  coverLetters CoverLetter[]
+
+  matchScores MatchScore[]
+
+  refreshTokens RefreshToken[]
+
+  activities ActivityLog[]
+
+  @@map("users")
+}
+
+model Profile {
+  id String @id @default(uuid())
+
+  userId String @unique
+
+  phone    String?
+  location String?
+  website  String?
+  linkedin String?
+  github   String?
+
+  summary String?
+
+  yearsExperience Int?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("profiles")
+}
+
+model RefreshToken {
+  id String @id @default(uuid())
+
+  token String @unique
+
+  userId String
+
+  expiresAt DateTime
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model CV {
+  id String @id @default(uuid())
+
+  userId String
+
+  fileName String
+  fileUrl  String
+
+  supabasePath String
+
+  status CVStatus @default(UPLOADED)
+
+  parsedText String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  analysis CVAnalysis?
+
+  matchScores MatchScore[]
+
+  @@map("cvs")
+}
+
+model CVAnalysis {
+  id String @id @default(uuid())
+
+  cvId String @unique
+
+  extractedSkills Json
+
+  education Json
+
+  experience Json
+
+  certifications Json?
+
+  strengths Json?
+
+  weaknesses Json?
+
+  recommendations Json?
+
+  createdAt DateTime @default(now())
+
+  cv CV @relation(fields: [cvId], references: [id], onDelete: Cascade)
+
+  @@map("cv_analyses")
+}
+
+model JobDescription {
+  id String @id @default(uuid())
+
+  title String
+
+  company String?
+
+  description String
+
+  requiredSkills Json
+
+  createdAt DateTime @default(now())
+
+  matchScores MatchScore[]
+
+  @@map("job_descriptions")
+}
+
+model MatchScore {
+  id String @id @default(uuid())
+
+  userId String
+
+  cvId String
+
+  jobDescriptionId String
+
+  score Float
+
+  matchedSkills Json?
+
+  missingSkills Json?
+
+  recommendations Json?
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  cv CV @relation(fields: [cvId], references: [id], onDelete: Cascade)
+
+  jobDescription JobDescription @relation(fields: [jobDescriptionId], references: [id], onDelete: Cascade)
+
+  @@map("match_scores")
+}
+
+model CoverLetter {
+  id String @id @default(uuid())
+
+  userId String
+
+  cvId String?
+
+  jobTitle String
+
+  companyName String?
+
+  content String @db.Text
+
+  status CoverLetterStatus @default(GENERATED)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("cover_letters")
+}
+
+model ActivityLog {
+  id String @id @default(uuid())
+
+  userId String
+
+  action String
+
+  metadata Json?
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("activity_logs")
+}
