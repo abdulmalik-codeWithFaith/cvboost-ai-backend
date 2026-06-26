@@ -4,6 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { loggerConfig } from './setup/config/logger.config';
+import { CvModule } from './cv/cv.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { loggerConfig } from './setup/config/logger.config';
     }),
     PrismaModule,
     AuthModule,
+    CvModule,
   ],
   controllers: [],
   providers: [],
