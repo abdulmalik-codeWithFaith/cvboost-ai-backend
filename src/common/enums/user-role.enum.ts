@@ -1,4 +1,4 @@
-export class UserRole {
-  USER = 'USER';
-  ADMIN = 'ADMIN';
+export enum UserRole {
+  USER = 'USER',
+  ADMIN = 'ADMIN',
 }
