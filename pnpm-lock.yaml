@@ -86,7 +86,7 @@ importers:
         version: 9.39.4
       '@nestjs/cli':
         specifier: ^11.0.0
-        version: 11.0.23(@swc/core@1.15.43)(@types/node@24.13.2)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)(prettier@3.8.4)
+        version: 11.0.23(@swc/core@1.15.43)(@types/node@24.13.2)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)(prettier@3.8.4)
       '@nestjs/schematics':
         specifier: ^11.0.0
         version: 11.1.0(chokidar@4.0.3)(prettier@3.8.4)(typescript@5.9.3)
@@ -146,7 +146,7 @@ importers:
         version: 7.2.2
       ts-loader:
         specifier: ^9.5.2
-        version: 9.6.1(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15))
+        version: 9.6.1(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15))
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.15.43)(@types/node@24.13.2)(typescript@5.9.3)
@@ -164,7 +164,7 @@ importers:
         version: 1.5.9(@swc/core@1.15.43)
       vitest:
         specifier: ^4.1.9
-        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0))
+        version: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4))
 
 packages:
 
@@ -5065,7 +5065,7 @@ snapshots:
       - typescript
       - uncss
 
-  '@nestjs/cli@11.0.23(@swc/core@1.15.43)(@types/node@24.13.2)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)(prettier@3.8.4)':
+  '@nestjs/cli@11.0.23(@swc/core@1.15.43)(@types/node@24.13.2)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)(prettier@3.8.4)':
     dependencies:
       '@angular-devkit/core': 19.2.27(chokidar@4.0.3)
       '@angular-devkit/schematics': 19.2.27(chokidar@4.0.3)
@@ -5076,14 +5076,14 @@ snapshots:
       chokidar: 4.0.3
       cli-table3: 0.6.5
       commander: 4.1.1
-      fork-ts-checker-webpack-plugin: 9.1.0(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15))
+      fork-ts-checker-webpack-plugin: 9.1.0(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15))
       glob: 13.0.6
       node-emoji: 1.11.0
       ora: 5.4.1
       tsconfig-paths: 4.2.0
       tsconfig-paths-webpack-plugin: 4.2.0
       typescript: 5.9.3
-      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)
+      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)
       webpack-node-externals: 3.0.0
     optionalDependencies:
       '@swc/core': 1.15.43
@@ -5681,7 +5681,7 @@ snapshots:
       obug: 2.1.3
       std-env: 4.1.0
       tinyrainbow: 3.1.0
-      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0))
+      vitest: 4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4))
 
   '@vitest/expect@4.1.9':
     dependencies:
@@ -5692,13 +5692,13 @@ snapshots:
       chai: 6.2.2
       tinyrainbow: 3.1.0
 
-  '@vitest/mocker@4.1.9(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0))':
+  '@vitest/mocker@4.1.9(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4))':
     dependencies:
       '@vitest/spy': 4.1.9
       estree-walker: 3.0.3
       magic-string: 0.30.21
     optionalDependencies:
-      vite: 8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0)
+      vite: 8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)
 
   '@vitest/pretty-format@4.1.9':
     dependencies:
@@ -6830,7 +6830,7 @@ snapshots:
       cross-spawn: 7.0.6
       signal-exit: 4.1.0
 
-  fork-ts-checker-webpack-plugin@9.1.0(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)):
+  fork-ts-checker-webpack-plugin@9.1.0(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)):
     dependencies:
       '@babel/code-frame': 7.29.7
       chalk: 4.1.2
@@ -6845,7 +6845,7 @@ snapshots:
       semver: 7.8.5
       tapable: 2.3.3
       typescript: 5.9.3
-      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)
+      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)
 
   form-data@4.0.6:
     dependencies:
@@ -9051,16 +9051,17 @@ snapshots:
 
   tapable@2.3.3: {}
 
-  terser-webpack-plugin@5.6.1(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)):
+  terser-webpack-plugin@5.6.1(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.3.3
       terser: 5.48.0
-      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)
+      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)
     optionalDependencies:
       '@swc/core': 1.15.43
       cssnano: 7.1.9(postcss@8.5.15)
+      esbuild: 0.28.1
       postcss: 8.5.15
 
   terser@5.48.0:
@@ -9103,7 +9104,7 @@ snapshots:
       '@tokenizer/token': 0.3.0
       ieee754: 1.2.1
 
-  ts-loader@9.6.1(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)):
+  ts-loader@9.6.1(typescript@5.9.3)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)):
     dependencies:
       chalk: 4.1.2
       enhanced-resolve: 5.24.0
@@ -9111,7 +9112,7 @@ snapshots:
       semver: 7.8.5
       source-map: 0.7.6
       typescript: 5.9.3
-      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)
+      webpack: 5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)
 
   ts-node@10.9.2(@swc/core@1.15.43)(@types/node@24.13.2)(typescript@5.9.3):
     dependencies:
@@ -9240,7 +9241,7 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0):
+  vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4):
     dependencies:
       lightningcss: 1.32.0
       picomatch: 4.0.4
@@ -9249,14 +9250,16 @@ snapshots:
       tinyglobby: 0.2.17
     optionalDependencies:
       '@types/node': 24.13.2
+      esbuild: 0.28.1
       fsevents: 2.3.3
       jiti: 2.7.0
       terser: 5.48.0
+      tsx: 4.22.4
 
-  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0)):
+  vitest@4.1.9(@types/node@24.13.2)(@vitest/coverage-v8@4.1.9)(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)):
     dependencies:
       '@vitest/expect': 4.1.9
-      '@vitest/mocker': 4.1.9(vite@8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0))
+      '@vitest/mocker': 4.1.9(vite@8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4))
       '@vitest/pretty-format': 4.1.9
       '@vitest/runner': 4.1.9
       '@vitest/snapshot': 4.1.9
@@ -9273,7 +9276,7 @@ snapshots:
       tinyexec: 1.2.4
       tinyglobby: 0.2.17
       tinyrainbow: 3.1.0
-      vite: 8.1.0(@types/node@24.13.2)(jiti@2.7.0)(terser@5.48.0)
+      vite: 8.1.0(@types/node@24.13.2)(esbuild@0.28.1)(jiti@2.7.0)(terser@5.48.0)(tsx@4.22.4)
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.13.2
@@ -9307,7 +9310,7 @@ snapshots:
 
   webpack-virtual-modules@0.6.2: {}
 
-  webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15):
+  webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15):
     dependencies:
       '@types/eslint-scope': 3.7.7
       '@types/estree': 1.0.9
@@ -9330,7 +9333,7 @@ snapshots:
       neo-async: 2.6.2
       schema-utils: 4.3.3
       tapable: 2.3.3
-      terser-webpack-plugin: 5.6.1(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(postcss@8.5.15))
+      terser-webpack-plugin: 5.6.1(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15)(webpack@5.106.2(@swc/core@1.15.43)(cssnano@7.1.9(postcss@8.5.15))(esbuild@0.28.1)(postcss@8.5.15))
       watchpack: 2.5.2
       webpack-sources: 3.5.0
     transitivePeerDependencies:
